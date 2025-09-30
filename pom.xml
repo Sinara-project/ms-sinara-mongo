@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>ms-sinara-mobile</artifactId>
+	<artifactId>ms-sinara-mongo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ms-sinara-mobile</name>
-	<description>ms-sinara-mobile</description>
+	<name>ms-sinara-mongo</name>
+	<description>ms-sinara-mongo</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -59,6 +59,11 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>5.0.0-M6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 	</dependencies>
 

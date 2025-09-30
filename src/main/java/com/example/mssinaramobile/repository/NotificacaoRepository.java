@@ -1,4 +1,4 @@
 package com.example.mssinaramobile.repository;
 
-public interface NotificacoesRepository {
+public interface NotificacaoRepository {
 }

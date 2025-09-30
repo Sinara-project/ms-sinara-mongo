@@ -1,20 +1,21 @@
-package com.example.mssinaramobile.model;
+package com.example.mssinaramobile.dto.response;
 
-import org.springframework.data.mongodb.core.mapping.Field;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.Date;
 
-public class Notificacoes {
-    @Field("_id")
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class NotificacaoResponse {
+
     private String id;
-
     private Date data;
-
     private String mensagem;
-
     private String tipo;
 
-    public Notificacoes(String id, Date data, String mensagem, String tipo) {
+    public NotificacaoResponse(String id,
+                               Date data,
+                               String mensagem,
+                               String tipo) {
         this.id = id;
         this.data = data;
         this.mensagem = mensagem;
