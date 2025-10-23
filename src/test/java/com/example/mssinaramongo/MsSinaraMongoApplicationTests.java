@@ -1,10 +1,10 @@
-package com.example.mssinaramobile;
+package com.example.mssinaramongo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MsSinaraMobileApplicationTests {
+class MsSinaraMongoApplicationTests {
 
 	@Test
 	void contextLoads() {
