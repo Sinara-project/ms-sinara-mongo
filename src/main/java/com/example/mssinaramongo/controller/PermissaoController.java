@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ms-sinara-mongo/permissoes")
+@RequestMapping("/permissoes")
 public class PermissaoController implements PermissaoOpenAPI {
 
     private final PermissaoService permissaoService;
@@ -58,14 +58,14 @@ public class PermissaoController implements PermissaoOpenAPI {
     }
 
     // Buscar por empresa
-    @GetMapping("/buscarPorEmpresa/{idEmpresa}")
+    @GetMapping("/buscar-por-empresa/{idEmpresa}")
     public ResponseEntity<List<PermissaoResponseDTO>> buscarPorEmpresa(@PathVariable Integer idEmpresa) {
         List<PermissaoResponseDTO> permissaoResponse = permissaoService.buscarPorEmpresa(idEmpresa);
         return ResponseEntity.ok(permissaoResponse);
     }
 
     // Buscar por nome
-    @GetMapping("/buscarPorNome/{nome}")
+    @GetMapping("/buscar-por-nome/{nome}")
     public ResponseEntity<List<PermissaoResponseDTO>> buscarPorNome(@PathVariable String nome) {
         List<PermissaoResponseDTO> permissaoResponse = permissaoService.buscarPorNome(nome);
         return ResponseEntity.ok(permissaoResponse);

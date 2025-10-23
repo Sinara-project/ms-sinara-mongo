@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ms-sinara-mongo/resposta-formulario-personalizado")
+@RequestMapping("/resposta-formulario-personalizado")
 public class RespostaFormularioPersonalizadoController implements RespostaFormularioPersonalizadoOpenAPI {
     private final RespostaFormularioPersonalizadoService respostaFormularioPersonalizadoService;
 

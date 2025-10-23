@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ms-sinara-mongo/formularioPersonalizado")
+@RequestMapping("/formulario-personalizado")
 public class FormularioPersonalizadoController implements FormularioPersonalizadoOpenAPI {
 
     private final FormularioPersonalizadoService formularioPersonalizadoService;
@@ -50,28 +50,28 @@ public class FormularioPersonalizadoController implements FormularioPersonalizad
     }
 
     // Buscar por criador
-    @GetMapping("/buscarPorCriador/{idCriador}")
+    @GetMapping("/buscar-por-criador/{idCriador}")
     public ResponseEntity<List<FormularioPersonalizadoResponseDTO>> buscarPorCriador(@PathVariable Integer idCriador) {
         List<FormularioPersonalizadoResponseDTO> formulariosPersonalizados = formularioPersonalizadoService.buscarPorCriador(idCriador);
         return ResponseEntity.ok(formulariosPersonalizados);
     }
 
     // Buscar por Título
-    @GetMapping("/buscarPorTitulo/{titulo}")
+    @GetMapping("/buscar-por-titulo/{titulo}")
     public ResponseEntity<List<FormularioPersonalizadoResponseDTO>> buscarPorTitulo(@PathVariable String titulo) {
         List<FormularioPersonalizadoResponseDTO> formulariosPersonalizados = formularioPersonalizadoService.buscarPorTitulo(titulo);
         return ResponseEntity.ok(formulariosPersonalizados);
     }
 
     // Buscar por parte título
-    @GetMapping("/buscarPorParteTitulo/{parteTitulo}")
+    @GetMapping("/buscar-por-parte-titulo/{parteTitulo}")
     public ResponseEntity<List<FormularioPersonalizadoResponseDTO>> buscarPorParteTitulo(@PathVariable String parteTitulo) {
         List<FormularioPersonalizadoResponseDTO> formulariosPersonalizados = formularioPersonalizadoService.buscarPorParteTitulo(parteTitulo);
         return ResponseEntity.ok(formulariosPersonalizados);
     }
 
     // Contar por empresa
-    @GetMapping("/contarPorCriador/{idCriador}")
+    @GetMapping("/contar-por-criador/{idCriador}")
     public ResponseEntity<Integer> contarPorCriador(Integer idCriador) {
         Integer quantidadeFormulariosPersonalizados = formularioPersonalizadoService.contarPorCriador(idCriador);
         return ResponseEntity.ok(quantidadeFormulariosPersonalizados);

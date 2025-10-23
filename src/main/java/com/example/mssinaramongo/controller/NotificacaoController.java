@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ms-sinara-mongo/notificacoes")
+@RequestMapping("/notificacoes")
 public class NotificacaoController implements NotificacaoOpenAPI {
 
     private final NotificacaoService notificacaoService;
@@ -50,7 +50,7 @@ public class NotificacaoController implements NotificacaoOpenAPI {
     }
 
     // Listar notificações por idEnvio
-    @GetMapping("buscarPorUsuario/{idEnvio}")
+    @GetMapping("buscar-por-usuario/{idEnvio}")
     public ResponseEntity<List<NotificacaoResponseDTO>> buscarPorIdEnvio(@PathVariable Integer idEnvio) {
         List<NotificacaoResponseDTO> notificacoesResponse = notificacaoService.buscarPorIdEnvio(idEnvio);
         return ResponseEntity.ok(notificacoesResponse);

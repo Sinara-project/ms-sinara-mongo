@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ms-sinara-mongo/formularioPadrao")
+@RequestMapping("/formulario-padrao")
 public class FormularioPadraoController implements FormularioPadraoOpenAPI {
 
     private final FormularioPadraoService formularioPadraoService;
@@ -45,14 +45,14 @@ public class FormularioPadraoController implements FormularioPadraoOpenAPI {
     }
 
     // Excluir um formulário
-    @DeleteMapping("excluir/{id}")
+    @DeleteMapping("/excluir/{id}")
     public ResponseEntity<String> excluirFormularioPadrao(@PathVariable String id) {
         formularioPadraoService.excluirFormularioPadrao(id);
         return ResponseEntity.ok("Formulário padrão excluído com sucesso");
     }
 
     // Buscar por empresa
-    @GetMapping("/buscarPorEmpresa/{idEmpresa}")
+    @GetMapping("/buscar-por-empresa/{idEmpresa}")
     public ResponseEntity<List<FormularioPadraoResponseDTO>> buscarFormularioPadraoPorEmpresa(@PathVariable Integer idEmpresa) {
         List<FormularioPadraoResponseDTO> lista = formularioPadraoService.buscarFormularioPadraoPorEmpresa(idEmpresa);
         return ResponseEntity.ok(lista);
@@ -61,7 +61,7 @@ public class FormularioPadraoController implements FormularioPadraoOpenAPI {
 
 
     // Buscar por data
-    @GetMapping("/buscarPorData/{data}")
+    @GetMapping("/buscar-por-data/{data}")
     public List<FormularioPadraoResponseDTO> buscarFormularioPadraoPorData(
             @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date data) {
         return formularioPadraoService.buscarFormularioPadraoPorData(data);
