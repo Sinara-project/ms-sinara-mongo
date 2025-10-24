@@ -37,7 +37,7 @@ public class FormularioPadrao {
     private double phAguaTratada;
 
     @Field("turbidez_agua_bruta")
-    private double turbinezAguaBruta;
+    private double turbidezAguaBruta;
 
     @Field("tubidez_agua_tratada")
     private double turbidezAguaTratada;
@@ -60,7 +60,7 @@ public class FormularioPadrao {
                             Double nitrato,
                             Double phAguaBruta,
                             Double phAguaTratada,
-                            Double turbinezAguaBruta,
+                            Double turbidezAguaBruta,
                             Double turbidezAguaTratada,
                             Integer idOperario,
                             String qualidade) {
@@ -74,7 +74,7 @@ public class FormularioPadrao {
         this.nitrato = nitrato;
         this.phAguaBruta = phAguaBruta;
         this.phAguaTratada = phAguaTratada;
-        this.turbinezAguaBruta = turbinezAguaBruta;
+        this.turbidezAguaBruta = turbidezAguaBruta;
         this.turbidezAguaTratada = turbidezAguaTratada;
         this.idOperario = idOperario;
         this.qualidade = qualidade;
@@ -160,12 +160,12 @@ public class FormularioPadrao {
         this.phAguaTratada = phAguaTratada;
     }
 
-    public Double getTurbinezAguaBruta() {
-        return turbinezAguaBruta;
+    public Double getTurbidezAguaBruta() {
+        return turbidezAguaBruta;
     }
 
-    public void setTurbinezAguaBruta(Double turbinezAguaBruta) {
-        this.turbinezAguaBruta = turbinezAguaBruta;
+    public void setturbidezAguaBruta(Double turbidezAguaBruta) {
+        this.turbidezAguaBruta = turbidezAguaBruta;
     }
 
     public Double getTurbidezAguaTratada() {

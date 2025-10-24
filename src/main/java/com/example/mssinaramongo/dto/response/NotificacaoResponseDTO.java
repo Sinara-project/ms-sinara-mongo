@@ -27,15 +27,15 @@ public class NotificacaoResponseDTO {
 
     @Schema(type = "array",
             description = "Lista de ids de permissão",
-            implementation = Integer.class)
-    private List<Integer> idEnvio;
+            implementation = String.class)
+    private List<String> idEnvio;
 
     public NotificacaoResponseDTO(String id,
                                   Date data,
                                   String mensagem,
                                   String tipo,
                                   String categoria,
-                                  List<Integer> idEnvio) {
+                                  List<String> idEnvio) {
         this.id = id;
         this.data = data;
         this.mensagem = mensagem;
@@ -84,11 +84,11 @@ public class NotificacaoResponseDTO {
         this.categoria = categoria;
     }
 
-    public List<Integer> getIdEnvio() {
+    public List<String> getIdEnvio() {
         return idEnvio;
     }
 
-    public void setIdEnvio(List<Integer> idEnvio) {
+    public void setIdEnvio(List<String> idEnvio) {
         this.idEnvio = idEnvio;
     }
 }
