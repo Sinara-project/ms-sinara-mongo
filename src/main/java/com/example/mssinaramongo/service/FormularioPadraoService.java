@@ -81,8 +81,8 @@ public class FormularioPadraoService {
         if (updates.getPhAguaTratada() >= 0) {
             formulario.setPhAguaTratada(updates.getPhAguaTratada());
         }
-        if (updates.getTurbinezAguaBruta() >= 0) {
-            formulario.setTurbinezAguaBruta(updates.getTurbinezAguaBruta());
+        if (updates.getTurbidezAguaBruta() >= 0) {
+            formulario.setturbidezAguaBruta(updates.getTurbidezAguaBruta());
         }
         if (updates.getTurbidezAguaTratada() >= 0) {
             formulario.setTurbidezAguaTratada(updates.getTurbidezAguaTratada());

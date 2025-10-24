@@ -56,7 +56,7 @@ public class FormularioPadraoRequestDTO {
     @DecimalMin(value = "0.0", message = "A turbidez da água deve ser maior ou igual a 0")
     @DecimalMax(value = "5.0", message = "A turbidez da água deve ser menor ou igual a 5")
     @Schema(description = "Turbidez da água bruta (antes do tratamento)", example = "5")
-    private double turbinezAguaBruta;
+    private double turbidezAguaBruta;
 
     @DecimalMin(value = "0.0", message = "A turbidez da água deve ser maior ou igual a 0")
     @DecimalMax(value = "5.0", message = "A turbidez da água deve ser menor ou igual a 5")
@@ -144,12 +144,12 @@ public class FormularioPadraoRequestDTO {
         this.phAguaTratada = phAguaTratada;
     }
 
-    public double getTurbinezAguaBruta() {
-        return turbinezAguaBruta;
+    public double getTurbidezAguaBruta() {
+        return turbidezAguaBruta;
     }
 
-    public void setTurbinezAguaBruta(double turbinezAguaBruta) {
-        this.turbinezAguaBruta = turbinezAguaBruta;
+    public void setturbidezAguaBruta(double turbidezAguaBruta) {
+        this.turbidezAguaBruta = turbidezAguaBruta;
     }
 
     public double getTurbidezAguaTratada() {

@@ -56,7 +56,7 @@ public class NotificacaoService {
         notificacaoRepository.deleteById(id);
     }
 
-    public List<NotificacaoResponseDTO> buscarPorIdEnvio(Integer idEnvio) {
+    public List<NotificacaoResponseDTO> buscarPorIdEnvio(String idEnvio) {
         List<Notificacao> notificacoes = notificacaoRepository.findByIdEnvioContainingOrderByDataDesc(idEnvio);
         List<NotificacaoResponseDTO> notificacaoResponses = new ArrayList<>();
 

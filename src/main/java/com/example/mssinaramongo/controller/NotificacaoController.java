@@ -51,7 +51,7 @@ public class NotificacaoController implements NotificacaoOpenAPI {
 
     // Listar notificações por idEnvio
     @GetMapping("buscar-por-usuario/{idEnvio}")
-    public ResponseEntity<List<NotificacaoResponseDTO>> buscarPorIdEnvio(@PathVariable Integer idEnvio) {
+    public ResponseEntity<List<NotificacaoResponseDTO>> buscarPorIdEnvio(@PathVariable String idEnvio) {
         List<NotificacaoResponseDTO> notificacoesResponse = notificacaoService.buscarPorIdEnvio(idEnvio);
         return ResponseEntity.ok(notificacoesResponse);
     }

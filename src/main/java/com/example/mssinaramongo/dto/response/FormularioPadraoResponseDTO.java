@@ -40,7 +40,7 @@ public class FormularioPadraoResponseDTO {
     private Double phAguaTratada;
 
     @Schema(description = "Turbidez da água bruta (antes do tratamento)", example = "5")
-    private Double turbinezAguaBruta;
+    private Double turbidezAguaBruta;
 
     @Schema(description = "Turbidez da água tratada (pós-tratamento)", example = "1.3")
     private Double turbidezAguaTratada;
@@ -65,7 +65,7 @@ public class FormularioPadraoResponseDTO {
                                        Double nitrato,
                                        Double phAguaBruta,
                                        Double phAguaTratada,
-                                       Double turbinezAguaBruta,
+                                       Double turbidezAguaBruta,
                                        Double turbidezAguaTratada,
                                        Integer idOperario,
                                        String qualidade) {
@@ -79,7 +79,7 @@ public class FormularioPadraoResponseDTO {
         this.nitrato = nitrato;
         this.phAguaBruta = phAguaBruta;
         this.phAguaTratada = phAguaTratada;
-        this.turbinezAguaBruta = turbinezAguaBruta;
+        this.turbidezAguaBruta = turbidezAguaBruta;
         this.turbidezAguaTratada = turbidezAguaTratada;
         this.idOperario = idOperario;
         this.qualidade = qualidade;
@@ -115,8 +115,8 @@ public class FormularioPadraoResponseDTO {
     public Double getPhAguaTratada() { return phAguaTratada; }
     public void setPhAguaTratada(Double phAguaTratada) { this.phAguaTratada = phAguaTratada; }
 
-    public Double getTurbinezAguaBruta() { return turbinezAguaBruta; }
-    public void setTurbinezAguaBruta(Double turbinezAguaBruta) { this.turbinezAguaBruta = turbinezAguaBruta; }
+    public Double getTurbidezAguaBruta() { return turbidezAguaBruta; }
+    public void setturbidezAguaBruta(Double turbidezAguaBruta) { this.turbidezAguaBruta = turbidezAguaBruta; }
 
     public Double getTurbidezAguaTratada() { return turbidezAguaTratada; }
     public void setTurbidezAguaTratada(Double turbidezAguaTratada) { this.turbidezAguaTratada = turbidezAguaTratada; }

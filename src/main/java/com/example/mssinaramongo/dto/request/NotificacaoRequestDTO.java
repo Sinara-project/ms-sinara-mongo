@@ -31,16 +31,16 @@ public class NotificacaoRequestDTO {
 
     @NotEmpty(message = "O idEnvio é obrigatório", groups = OnCreate.class)
     @ArraySchema(
-            schema = @Schema(description = "id referente a quem receberá a notificação", example = "1234"),
-            arraySchema = @Schema(description = "Lista de IDs de quem receberá a notificação", example = "[\"123\", \"456\"]")
+            schema = @Schema(description = "id referente a quem receberá a notificação", example = "abc234"),
+            arraySchema = @Schema(description = "Lista de IDs de quem receberá a notificação", example = "[\"abc3\", \"def23\"]")
     )
-    private List<Integer> idEnvio;
+    private List<String> idEnvio;
 
     public NotificacaoRequestDTO(Date data,
                                  String mensagem,
                                  String tipo,
                                  String categoria,
-                                 List<Integer> idEnvio) {
+                                 List<String> idEnvio) {
         this.data = data;
         this.mensagem = mensagem;
         this.tipo = tipo;
@@ -80,11 +80,11 @@ public class NotificacaoRequestDTO {
         this.categoria = categoria;
     }
 
-    public List<Integer> getIdEnvio() {
+    public List<String> getIdEnvio() {
         return idEnvio;
     }
 
-    public void setIdEnvio(List<Integer> idEnvio) {
+    public void setIdEnvio(List<String> idEnvio) {
         this.idEnvio = idEnvio;
     }
 }

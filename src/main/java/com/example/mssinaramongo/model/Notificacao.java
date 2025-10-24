@@ -22,14 +22,14 @@ public class Notificacao {
     private String categoria;
 
     @Field("id_envio")
-    private List<Integer> idEnvio;
+    private List<String> idEnvio;
 
     public Notificacao(String id,
                        Date data,
                        String mensagem,
                        String tipo,
                        String categoria,
-                       List<Integer> idEnvio) {
+                       List<String> idEnvio) {
         this.id = id;
         this.data = data;
         this.mensagem = mensagem;
@@ -78,11 +78,11 @@ public class Notificacao {
         this.categoria = categoria;
     }
 
-    public List<Integer> getIdEnvio() {
+    public List<String> getIdEnvio() {
         return idEnvio;
     }
 
-    public void setIdEnvio(List<Integer> idEnvio) {
+    public void setIdEnvio(List<String> idEnvio) {
         this.idEnvio = idEnvio;
     }
 }
