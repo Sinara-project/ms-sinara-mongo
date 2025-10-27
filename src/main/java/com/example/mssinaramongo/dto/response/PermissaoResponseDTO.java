@@ -54,11 +54,11 @@ public class PermissaoResponseDTO {
         this.nomePermissao = nomePermissao;
     }
 
-    public List<Integer> getIdFuncionario() {
+    public List<Integer> getIdOperario() {
         return idOperario;
     }
 
-    public void setIdFuncionario(List<Integer> idOperario) {
+    public void setIdOperario(List<Integer> idOperario) {
         this.idOperario = idOperario;
     }
 }

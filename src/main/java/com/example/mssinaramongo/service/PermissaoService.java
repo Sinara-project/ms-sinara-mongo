@@ -54,7 +54,7 @@ public class PermissaoService {
 
         if (updates.getIdEmpresa() != null) permissao.setIdEmpresa(updates.getIdEmpresa());
         if (updates.getNomePermissao() != null) permissao.setNomePermissao(updates.getNomePermissao());
-        if (updates.getIdFuncionario() != null) permissao.setIdFuncionario(updates.getIdFuncionario());
+        if (updates.getIdOperario() != null) permissao.setIdOperario(updates.getIdOperario());
 
         Permissao permissaoAtualizada = repository.save(permissao);
         return objectMapper.convertValue(permissaoAtualizada, PermissaoResponseDTO.class);

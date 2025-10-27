@@ -121,11 +121,11 @@ public class FormularioPadraoResponseDTO {
     public Double getTurbidezAguaTratada() { return turbidezAguaTratada; }
     public void setTurbidezAguaTratada(Double turbidezAguaTratada) { this.turbidezAguaTratada = turbidezAguaTratada; }
 
-    public Integer getIdFuncionario() {
+    public Integer getIdOperario() {
         return idOperario;
     }
 
-    public void setIdFuncionario(Integer idOperario) {
+    public void setIdOperario(Integer idOperario) {
         this.idOperario = idOperario;
     }
 

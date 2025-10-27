@@ -87,8 +87,8 @@ public class FormularioPadraoService {
         if (updates.getTurbidezAguaTratada() >= 0) {
             formulario.setTurbidezAguaTratada(updates.getTurbidezAguaTratada());
         }
-        if (updates.getIdFuncionario() != null) {
-            formulario.setIdFuncionario(updates.getIdFuncionario());
+        if (updates.getIdOperario() != null) {
+            formulario.setIdOperario(updates.getIdOperario());
         }
         if (updates.getQualidade() != null && !updates.getQualidade().isEmpty()) {
             formulario.setQualidade(updates.getQualidade());
