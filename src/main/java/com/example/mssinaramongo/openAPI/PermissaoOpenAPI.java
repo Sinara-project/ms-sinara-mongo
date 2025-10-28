@@ -1,6 +1,6 @@
 package com.example.mssinaramongo.openAPI;
 
-import com.example.mssinaramongo.dto.request.PermissaoRequest;
+import com.example.mssinaramongo.dto.request.PermissaoRequestDTO;
 import com.example.mssinaramongo.dto.response.PermissaoResponseDTO;
 import com.example.mssinaramongo.validation.OnCreate;
 import io.swagger.v3.oas.annotations.Operation;
@@ -44,7 +44,7 @@ public interface PermissaoOpenAPI {
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = PermissaoResponseDTO.class))),
             @ApiResponse(responseCode = "404", description = "Nenhuma permissão foi encontrada")
     })
-    ResponseEntity<String> inserirPermissao(@Parameter(description = "Informações da permissão") @Validated({OnCreate.class, Default.class}) @RequestBody PermissaoRequest dto);
+    ResponseEntity<String> inserirPermissao(@Parameter(description = "Informações da permissão") @Validated({OnCreate.class, Default.class}) @RequestBody PermissaoRequestDTO dto);
 
     @Operation(summary = "Atualiza uma permissão",
             description = "Retorna uma Response Entity")
@@ -54,7 +54,7 @@ public interface PermissaoOpenAPI {
             @ApiResponse(responseCode = "404", description = "Não foi possível atualizar a permissão")
     })
     ResponseEntity<String> atualizarPermissao(@Parameter(description = "ID único da permissão") @Validated({OnCreate.class, Default.class}) @PathVariable String id,
-                                              @Parameter(description = "informações a serem atualizadas") @RequestBody PermissaoRequest updates);
+                                              @Parameter(description = "informações a serem atualizadas") @RequestBody PermissaoRequestDTO updates);
 
     @Operation(summary = "Excluí uma permissão",
             description = "Retorna uma Response Entity")
@@ -82,4 +82,20 @@ public interface PermissaoOpenAPI {
             @ApiResponse(responseCode = "404", description = "Nenhuma permissão foi encontrada")
     })
     ResponseEntity<List<PermissaoResponseDTO>> buscarPorNome(@Parameter(description = "Nome da permissão") @PathVariable String nomePermissao);
-}
+
+    @Operation(summary = "Adiciona IDs de operário a permissão",
+        description = "Retorna uma Response Entity")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Foi encontrada uma permissão com esse ID"),
+            @ApiResponse(responseCode = "404", description = "Nenhuma permissão foi encontrada")
+    })
+    ResponseEntity<String> adicionarIdOperario(@Parameter(description = "ID único da permissao") @PathVariable String id, @Parameter(description = "lista de IDs de operário a serem adicionados") @RequestBody List<Integer> updates);
+
+    @Operation(summary = "Remove IDs de operário a permissão",
+            description = "Retorna uma Response Entity")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Foi encontrada uma permissão com esse ID"),
+            @ApiResponse(responseCode = "404", description = "Nenhuma permissão foi encontrada")
+    })
+    ResponseEntity<String> removerIdOperario(@Parameter(description = "ID único da permissao") @PathVariable String id, @Parameter(description = "lista de IDs de operário a serem removidos") @RequestBody List<Integer> updates);
+    }

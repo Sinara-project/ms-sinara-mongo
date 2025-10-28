@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotNull;
 import java.util.List;
 
 @Schema(description = "Payload de criação/atualização de uma permissão")
-public class PermissaoRequest {
+public class PermissaoRequestDTO {
 
     @NotNull(message = "O id da empresa é obrigatório", groups = OnCreate.class)
     @Schema(description = "ID único da empresa", example = "2345")
@@ -20,16 +20,15 @@ public class PermissaoRequest {
     @Schema(description = "Nome da permissão", example = "Captação")
     private String nomePermissao;
 
-    @NotEmpty(message = "Deve ter pelo menos um operário abilitado")
     @ArraySchema(
             schema = @Schema(description = "ID dos operários abilitados a essa permissão", example = "abc123"),
             arraySchema = @Schema(description = "Lista de IDs de operários", example = "[\"1\", \"2\"]")
     )
     private List<Integer> idOperario;
 
-    public PermissaoRequest(Integer idEmpresa,
-                            String nomePermissao,
-                            List<Integer> idOperario) {
+    public PermissaoRequestDTO(Integer idEmpresa,
+                               String nomePermissao,
+                               List<Integer> idOperario) {
         this.idEmpresa = idEmpresa;
         this.nomePermissao = nomePermissao;
         this.idOperario = idOperario;
@@ -51,11 +50,11 @@ public class PermissaoRequest {
         this.nomePermissao = nomePermissao;
     }
 
-    public List<Integer> getIdFuncionario() {
+    public List<Integer> getIdOperario() {
         return idOperario;
     }
 
-    public void setIdFuncionario(List<Integer> idOperario) {
+    public void setIdOperario(List<Integer> idOperario) {
         this.idOperario = idOperario;
     }
 }

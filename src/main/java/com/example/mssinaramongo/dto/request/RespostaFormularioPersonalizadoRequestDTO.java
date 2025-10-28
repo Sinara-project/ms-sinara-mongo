@@ -30,14 +30,21 @@ public class RespostaFormularioPersonalizadoRequestDTO {
     @Schema(description = "ID único do operário", example = "1233")
     private Integer idOperario;
 
+    @NotNull(message = "O ID da empresa é obrigatório")
+    @Schema(description = "ID único da empresa", example = "1233")
+    private Integer idEmpresa;
+
+
     public RespostaFormularioPersonalizadoRequestDTO(List<Resposta> respostas,
                                                      Date data,
                                                      String idForm,
-                                                     Integer idOperario) {
+                                                     Integer idOperario,
+                                                     Integer idEmpresa) {
         this.respostas = respostas;
         this.data = data;
         this.idForm = idForm;
         this.idOperario = idOperario;
+        this.idEmpresa = idEmpresa;
     }
 
     public List<Resposta> getRespostas() {
@@ -70,5 +77,13 @@ public class RespostaFormularioPersonalizadoRequestDTO {
 
     public void setIdOperario(Integer idOperario) {
         this.idOperario = idOperario;
+    }
+
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 }

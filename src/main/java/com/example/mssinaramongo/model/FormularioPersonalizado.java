@@ -13,9 +13,6 @@ public class FormularioPersonalizado {
     @Id
     private String id;
 
-    @Field("id_criador")
-    private Integer idCriador;
-
     private String titulo;
 
     private String descricao;
@@ -25,21 +22,24 @@ public class FormularioPersonalizado {
     @Field("id_permissao")
     private List<String> idPermissao;
 
+    @Field("id_empresa")
+    private Integer idEmpresa;
+
     public FormularioPersonalizado() {
     }
 
     public FormularioPersonalizado(String id,
-                                   Integer idCriador,
                                    String titulo,
                                    String descricao,
                                    List<Campo> campos,
-                                   List<String> idPermissao) {
+                                   List<String> idPermissao,
+                                   Integer idEmpresa) {
         this.id = id;
-        this.idCriador = idCriador;
         this.titulo = titulo;
         this.descricao = descricao;
         this.campos = campos;
         this.idPermissao = idPermissao;
+        this.idEmpresa = idEmpresa;
     }
 
     public String getId() {
@@ -48,14 +48,6 @@ public class FormularioPersonalizado {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Integer getIdCriador() {
-        return idCriador;
-    }
-
-    public void setIdCriador(Integer idCriador) {
-        this.idCriador = idCriador;
     }
 
     public String getTitulo() {
@@ -88,5 +80,13 @@ public class FormularioPersonalizado {
 
     public void setIdPermissao(List<String> idPermissao) {
         this.idPermissao = idPermissao;
+    }
+
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 }

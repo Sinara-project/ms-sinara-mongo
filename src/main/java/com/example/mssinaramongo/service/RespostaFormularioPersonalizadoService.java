@@ -83,7 +83,7 @@ public class RespostaFormularioPersonalizadoService {
         formularioCompleto.setData(infoResposta.getData());
         formularioCompleto.setTitulo(infoForms.get().getTitulo());
         formularioCompleto.setDescricao(infoForms.get().getDescricao());
-        formularioCompleto.setIdCriador(infoForms.get().getIdCriador());
+        formularioCompleto.setIdEmpresa(infoForms.get().getIdEmpresa());
         formularioCompleto.setIdOperario(infoResposta.getIdOperario());
         formularioCompleto.setIdPermissao(infoForms.get().getIdPermissao());
         formularioCompleto.setStatus(formularioPersonalizadoService.buscarStatus(idForm));
@@ -135,5 +135,16 @@ public class RespostaFormularioPersonalizadoService {
         }
 
         return result;
+    }
+
+    public Integer buscarUltimoOperario(Integer idEmpresa) {
+        List<RespostaFormularioPersonalizado> lista = respostaFormularioPersonalizadoRepository.findByIdEmpresaOrderByDataDesc(idEmpresa);
+
+        if (lista.isEmpty()) {
+            return 0;
+        } else {
+            RespostaFormularioPersonalizado formularioPersonalizado = lista.getFirst();
+            return formularioPersonalizado.getIdOperario();
+        }
     }
 }

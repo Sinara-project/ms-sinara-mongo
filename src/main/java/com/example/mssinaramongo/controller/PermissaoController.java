@@ -1,10 +1,11 @@
 package com.example.mssinaramongo.controller;
 
-import com.example.mssinaramongo.dto.request.PermissaoRequest;
+import com.example.mssinaramongo.dto.request.PermissaoRequestDTO;
 import com.example.mssinaramongo.dto.response.PermissaoResponseDTO;
 import com.example.mssinaramongo.openAPI.PermissaoOpenAPI;
 import com.example.mssinaramongo.service.PermissaoService;
 import com.example.mssinaramongo.validation.OnCreate;
+import com.example.mssinaramongo.validation.OnPatch;
 import jakarta.validation.groups.Default;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -37,15 +38,15 @@ public class PermissaoController implements PermissaoOpenAPI {
 
     // Criar nova
     @PostMapping("/inserir")
-    public ResponseEntity<String> inserirPermissao(@Validated({OnCreate.class, Default.class}) @RequestBody PermissaoRequest dto) {
+    public ResponseEntity<String> inserirPermissao(@Validated({OnCreate.class, Default.class}) @RequestBody PermissaoRequestDTO dto) {
         permissaoService.inserirPermissao(dto);
         return ResponseEntity.ok("Permissão inserida com sucesso!");
     }
 
     // Atualizar
-    @PutMapping("/atualizar/{id}")
-    public ResponseEntity<String> atualizarPermissao(@Validated({OnCreate.class, Default.class}) @PathVariable String id,
-                                       @RequestBody PermissaoRequest updates) {
+    @PatchMapping("/atualizar/{id}")
+    public ResponseEntity<String> atualizarPermissao(@Validated({OnPatch.class, Default.class}) @PathVariable String id,
+                                       @RequestBody PermissaoRequestDTO updates) {
         permissaoService.atualizarPermissao(id, updates);
         return ResponseEntity.ok("Permissão atualizada com sucesso!");
     }
@@ -69,5 +70,20 @@ public class PermissaoController implements PermissaoOpenAPI {
     public ResponseEntity<List<PermissaoResponseDTO>> buscarPorNome(@PathVariable String nome) {
         List<PermissaoResponseDTO> permissaoResponse = permissaoService.buscarPorNome(nome);
         return ResponseEntity.ok(permissaoResponse);
+    }
+
+    // adicionar ids de operário
+    @PatchMapping("/adicionar-ids-operario/{id}")
+    public ResponseEntity<String> adicionarIdOperario(@PathVariable String id, @RequestBody List<Integer> updates) {
+        permissaoService.adicionarOperarios(id, updates);
+        return ResponseEntity.ok("Operários adicionados com sucesso");
+    }
+
+    // remover ids de operário
+    @PatchMapping("/remover-ids-operario/{id}")
+    public ResponseEntity<String> removerIdOperario(@PathVariable String id, @RequestBody List<Integer> updates) {
+        permissaoService.removerOperarios(id, updates);
+
+        return ResponseEntity.ok("Operários removidos com sucesso");
     }
 }

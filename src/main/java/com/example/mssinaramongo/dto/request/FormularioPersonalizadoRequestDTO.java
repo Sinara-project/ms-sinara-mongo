@@ -12,9 +12,9 @@ import java.util.List;
 @Schema(description = "Payload de criação/atualização de um formulário personalizado")
 public class FormularioPersonalizadoRequestDTO {
 
-    @NotNull(message = "O ID do criador é obrigatório", groups = OnCreate.class)
-    @Schema(description = "ID do criador", example = "1234")
-    private Integer idCriador;
+    @NotNull(message = "O ID da empresa é obrigatório", groups = OnCreate.class)
+    @Schema(description = "ID da empresa", example = "1234")
+    private Integer idEmpresa;
 
     @NotBlank(message = "O título é obrigatório", groups = OnCreate.class)
     @Schema(description = "Título do formulário personalizado", example = "Formulário referente ao dia 12/10")
@@ -37,24 +37,24 @@ public class FormularioPersonalizadoRequestDTO {
     )
     private List<String> idPermissao;
 
-    public FormularioPersonalizadoRequestDTO(Integer idCriador,
+    public FormularioPersonalizadoRequestDTO(Integer idEmpresa,
                                              String titulo,
                                              String descricao,
                                              List<Campo> campos,
                                              List<String> idPermissao) {
-        this.idCriador = idCriador;
+        this.idEmpresa = idEmpresa;
         this.titulo = titulo;
         this.descricao = descricao;
         this.campos = campos;
         this.idPermissao = idPermissao;
     }
 
-    public Integer getIdCriador() {
-        return idCriador;
+    public Integer getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setIdCriador(Integer idCriador) {
-        this.idCriador = idCriador;
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     public String getTitulo() {

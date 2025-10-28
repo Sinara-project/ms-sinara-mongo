@@ -68,4 +68,12 @@ public class RespostaFormularioPersonalizadoController implements RespostaFormul
         List<FormularioPersonalizadoComRespostasResponseDTO> formulariosRespondidos = respostaFormularioPersonalizadoService.buscarFormulariosRespondidosPorPermissao(idPermissao);
         return ResponseEntity.ok(formulariosRespondidos);
     }
+
+    // buscar último operário que respondeu um forms
+    @GetMapping("buscar-ultimo-operario/{idEmpresa}")
+    public ResponseEntity<Integer> buscarUltimoOperario(@PathVariable Integer idEmpresa) {
+        Integer ultimoOperario = respostaFormularioPersonalizadoService.buscarUltimoOperario(idEmpresa);
+
+        return ResponseEntity.ok(ultimoOperario);
+    }
 }

@@ -176,11 +176,11 @@ public class FormularioPadrao {
         this.turbidezAguaTratada = turbidezAguaTratada;
     }
 
-    public Integer getIdFuncionario() {
+    public Integer getIdOperario() {
         return idOperario;
     }
 
-    public void setIdFuncionario(Integer idOperario) {
+    public void setIdOperario(Integer idOperario) {
         this.idOperario = idOperario;
     }
 

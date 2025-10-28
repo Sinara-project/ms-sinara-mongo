@@ -58,11 +58,11 @@ public interface FormularioPersonalizadoOpenAPI {
     @Operation(summary = "Busca formulários personalizados por criador (adm)",
             description = "Retorna uma lista de formulários personalizados")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Foram achados formulários personalizados com esse idCriador",
+            @ApiResponse(responseCode = "200", description = "Foram achados formulários personalizados com esse idEmpresa",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-            @ApiResponse(responseCode = "404", description = "Nenhum formulário personalizado foi encontrado com esse idCriador")
+            @ApiResponse(responseCode = "404", description = "Nenhum formulário personalizado foi encontrado com esse idEmpresa")
     })
-    ResponseEntity<List<FormularioPersonalizadoResponseDTO>> buscarPorCriador(@Parameter(description = "ID da empresa que criou o formulario") @PathVariable Integer idCriador);
+    ResponseEntity<List<FormularioPersonalizadoResponseDTO>> buscarPorCriador(@Parameter(description = "ID da empresa que criou o formulario") @PathVariable Integer idEmpresa);
 
     @Operation(summary = "Busca formulários personalizados por título",
             description = "Retorna uma lista de formulários personalizados")
@@ -90,7 +90,7 @@ public interface FormularioPersonalizadoOpenAPI {
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Integer.class))),
             @ApiResponse(responseCode = "404", description = "Nenhum formulário personalizado foi encontrado com esse ID")
     })
-    ResponseEntity<Integer> contarPorCriador(@Parameter(description = "ID único da empresa") @PathVariable Integer idCriador);
+    ResponseEntity<Integer> contarPorEmpresa(@Parameter(description = "ID único da empresa") @PathVariable Integer idEmpresa);
 
     @Operation(summary = "Verifica se o formulário foi respondido ou não",
             description = "Retorna um boolean")
@@ -110,7 +110,7 @@ public interface FormularioPersonalizadoOpenAPI {
     })
     ResponseEntity<List<FormularioPersonalizadoResponseDTO>> buscarFormulariosPendentesPorPermissao(@Parameter(description = "ID único da permissão") @PathVariable String idPermissao);
 
-    @Operation(summary = "Busca os formulários cada permissão",
+    @Operation(summary = "Busca os formulários de cada permissão",
             description = "Retorna uma lista de formularios")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Foram achados formulários para essa permissão",

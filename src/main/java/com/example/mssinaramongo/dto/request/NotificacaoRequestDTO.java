@@ -36,16 +36,22 @@ public class NotificacaoRequestDTO {
     )
     private List<String> idEnvio;
 
+    @NotNull(message = "o ID da empresa é obrigatório", groups = OnCreate.class)
+    @Schema(description = "ID único da empresa", example = "1234")
+    private Integer idEmpresa;
+
     public NotificacaoRequestDTO(Date data,
                                  String mensagem,
                                  String tipo,
                                  String categoria,
-                                 List<String> idEnvio) {
+                                 List<String> idEnvio,
+                                 Integer idEmpresa) {
         this.data = data;
         this.mensagem = mensagem;
         this.tipo = tipo;
         this.categoria = categoria;
         this.idEnvio = idEnvio;
+        this.idEmpresa = idEmpresa;
     }
 
     public Date getData() {
@@ -86,5 +92,13 @@ public class NotificacaoRequestDTO {
 
     public void setIdEnvio(List<String> idEnvio) {
         this.idEnvio = idEnvio;
+    }
+
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 }

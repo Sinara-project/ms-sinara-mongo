@@ -30,18 +30,23 @@ public class NotificacaoResponseDTO {
             implementation = String.class)
     private List<String> idEnvio;
 
+    @Schema(description = "ID único da empresa", example = "1234")
+    private Integer idEmpresa;
+
     public NotificacaoResponseDTO(String id,
                                   Date data,
                                   String mensagem,
                                   String tipo,
                                   String categoria,
-                                  List<String> idEnvio) {
+                                  List<String> idEnvio,
+                                  Integer idEmpresa) {
         this.id = id;
         this.data = data;
         this.mensagem = mensagem;
         this.tipo = tipo;
         this.categoria = categoria;
         this.idEnvio = idEnvio;
+        this.idEmpresa = idEmpresa;
     }
 
     public String getId() {
@@ -90,5 +95,13 @@ public class NotificacaoResponseDTO {
 
     public void setIdEnvio(List<String> idEnvio) {
         this.idEnvio = idEnvio;
+    }
+
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 }

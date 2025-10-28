@@ -10,14 +10,14 @@ import java.util.List;
 
 @Repository
 public interface FormularioPersonalizadoRepository extends MongoRepository<FormularioPersonalizado, String> {
-    List<FormularioPersonalizado> findByIdCriador(Integer idCriador);
+    List<FormularioPersonalizado> findByIdEmpresa(Integer idEmpresa);
 
     List<FormularioPersonalizado> findByTitulo(String titulo);
 
     @Query("{ 'titulo': { $regex: ?0, $options: 'i' } }")
     List<FormularioPersonalizado> buscarPorParteTitulo(String partTitulo);
 
-    Integer countByIdCriador(Integer idCriador);
+    Integer countByIdEmpresa(Integer idEmpresa);
 
     @Query(value = "{ '_id': ObjectId(?0) }", fields = "{ 'campos': 1, '_id': 0 }")
     List<Campo> findCamposByIdForm(String id);
