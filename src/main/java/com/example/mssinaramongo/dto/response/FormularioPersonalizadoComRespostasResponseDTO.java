@@ -13,7 +13,7 @@ public class FormularioPersonalizadoComRespostasResponseDTO {
     private String id;
 
     @Schema(description = "ID único da empresa", example = "123")
-    private Integer idCriador;
+    private Integer idEmpresa;
 
     @Schema(description = "Título do formulário", example = "Captação de água")
     private String titulo;
@@ -41,7 +41,7 @@ public class FormularioPersonalizadoComRespostasResponseDTO {
     private Boolean status;
 
     public FormularioPersonalizadoComRespostasResponseDTO(String id,
-                                                          Integer idCriador,
+                                                          Integer idEmpresa,
                                                           String titulo,
                                                           String descricao,
                                                           List<CamposComRespostas> campos,
@@ -50,7 +50,7 @@ public class FormularioPersonalizadoComRespostasResponseDTO {
                                                           Integer idOperario,
                                                           Boolean status) {
         this.id = id;
-        this.idCriador = idCriador;
+        this.idEmpresa = idEmpresa;
         this.titulo = titulo;
         this.descricao = descricao;
         this.campos = campos;
@@ -72,12 +72,12 @@ public class FormularioPersonalizadoComRespostasResponseDTO {
         this.id = id;
     }
 
-    public Integer getIdCriador() {
-        return idCriador;
+    public Integer getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setIdCriador(Integer idCriador) {
-        this.idCriador = idCriador;
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     public String getTitulo() {

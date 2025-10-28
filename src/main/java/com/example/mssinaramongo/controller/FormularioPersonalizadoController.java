@@ -50,9 +50,9 @@ public class FormularioPersonalizadoController implements FormularioPersonalizad
     }
 
     // Buscar por criador
-    @GetMapping("/buscar-por-criador/{idCriador}")
-    public ResponseEntity<List<FormularioPersonalizadoResponseDTO>> buscarPorCriador(@PathVariable Integer idCriador) {
-        List<FormularioPersonalizadoResponseDTO> formulariosPersonalizados = formularioPersonalizadoService.buscarPorCriador(idCriador);
+    @GetMapping("/buscar-por-criador/{idEmpresa}")
+    public ResponseEntity<List<FormularioPersonalizadoResponseDTO>> buscarPorCriador(@PathVariable Integer idEmpresa) {
+        List<FormularioPersonalizadoResponseDTO> formulariosPersonalizados = formularioPersonalizadoService.buscarPorCriador(idEmpresa);
         return ResponseEntity.ok(formulariosPersonalizados);
     }
 
@@ -71,9 +71,9 @@ public class FormularioPersonalizadoController implements FormularioPersonalizad
     }
 
     // Contar por empresa
-    @GetMapping("/contar-por-criador/{idCriador}")
-    public ResponseEntity<Integer> contarPorCriador(Integer idCriador) {
-        Integer quantidadeFormulariosPersonalizados = formularioPersonalizadoService.contarPorCriador(idCriador);
+    @GetMapping("/contar-por-criador/{idEmpresa}")
+    public ResponseEntity<Integer> contarPorEmpresa(Integer idEmpresa) {
+        Integer quantidadeFormulariosPersonalizados = formularioPersonalizadoService.contarPorCriador(idEmpresa);
         return ResponseEntity.ok(quantidadeFormulariosPersonalizados);
     }
 

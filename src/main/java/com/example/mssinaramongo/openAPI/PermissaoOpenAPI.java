@@ -82,4 +82,20 @@ public interface PermissaoOpenAPI {
             @ApiResponse(responseCode = "404", description = "Nenhuma permissão foi encontrada")
     })
     ResponseEntity<List<PermissaoResponseDTO>> buscarPorNome(@Parameter(description = "Nome da permissão") @PathVariable String nomePermissao);
-}
+
+    @Operation(summary = "Adiciona IDs de operário a permissão",
+        description = "Retorna uma Response Entity")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Foi encontrada uma permissão com esse ID"),
+            @ApiResponse(responseCode = "404", description = "Nenhuma permissão foi encontrada")
+    })
+    ResponseEntity<String> adicionarIdOperario(@Parameter(description = "ID único da permissao") @PathVariable String id, @Parameter(description = "lista de IDs de operário a serem adicionados") @RequestBody List<Integer> updates);
+
+    @Operation(summary = "Remove IDs de operário a permissão",
+            description = "Retorna uma Response Entity")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Foi encontrada uma permissão com esse ID"),
+            @ApiResponse(responseCode = "404", description = "Nenhuma permissão foi encontrada")
+    })
+    ResponseEntity<String> removerIdOperario(@Parameter(description = "ID único da permissao") @PathVariable String id, @Parameter(description = "lista de IDs de operário a serem removidos") @RequestBody List<Integer> updates);
+    }

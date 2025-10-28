@@ -14,7 +14,7 @@ public class FormularioPersonalizadoResponseDTO {
     private String id;
 
     @Schema(description = "ID único do criador", example = "1234")
-    private Integer idCriador;
+    private Integer idEmpresa;
 
     @Schema(description = "Título do formulário personalizado", example = "Monitoramento referente ao dia 12/10")
     private String titulo;
@@ -33,13 +33,13 @@ public class FormularioPersonalizadoResponseDTO {
     private List<String> idPermissao;
 
     public FormularioPersonalizadoResponseDTO(String id,
-                                              Integer idCriador,
+                                              Integer idEmpresa,
                                               String titulo,
                                               String descricao,
                                               List<Campo> campos,
                                               List<String> idPermissao) {
         this.id = id;
-        this.idCriador = idCriador;
+        this.idEmpresa = idEmpresa;
         this.titulo = titulo;
         this.descricao = descricao;
         this.campos = campos;
@@ -54,12 +54,12 @@ public class FormularioPersonalizadoResponseDTO {
         this.id = id;
     }
 
-    public Integer getIdCriador() {
-        return idCriador;
+    public Integer getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setIdCriador(Integer idCriador) {
-        this.idCriador = idCriador;
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     public String getTitulo() {

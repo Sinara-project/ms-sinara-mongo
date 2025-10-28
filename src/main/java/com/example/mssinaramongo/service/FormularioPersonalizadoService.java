@@ -61,8 +61,8 @@ public class FormularioPersonalizadoService {
         formularioPersonalizadoRepository.deleteById(id);
     }
 
-    public List<FormularioPersonalizadoResponseDTO> buscarPorCriador(Integer idCriador) {
-        List<FormularioPersonalizado> formularios = formularioPersonalizadoRepository.findByIdCriador(idCriador);
+    public List<FormularioPersonalizadoResponseDTO> buscarPorCriador(Integer idEmpresa) {
+        List<FormularioPersonalizado> formularios = formularioPersonalizadoRepository.findByIdEmpresa(idEmpresa);
         List<FormularioPersonalizadoResponseDTO> formularioResponses = new ArrayList<>();
 
         for (int i = 0; i < formularios.size(); i++) {
@@ -94,8 +94,8 @@ public class FormularioPersonalizadoService {
         return formularioResponses;
     }
 
-    public Integer contarPorCriador(Integer idCriador) {
-        Integer count = formularioPersonalizadoRepository.countByIdCriador(idCriador);
+    public Integer contarPorCriador(Integer idEmpresa) {
+        Integer count = formularioPersonalizadoRepository.countByIdEmpresa(idEmpresa);
         return count;
     }
 

@@ -6,10 +6,17 @@ import com.example.mssinaramongo.exception.EntidadeNaoEncontradaException;
 import com.example.mssinaramongo.model.Permissao;
 import com.example.mssinaramongo.repository.PermissaoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mongodb.client.result.UpdateResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
+
 
 @Service
 public class PermissaoService {
@@ -18,6 +25,10 @@ public class PermissaoService {
     private final ObjectMapper objectMapper;
     private final PermissaoRepository permissaoRepository;
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
+    @Autowired
     public PermissaoService(PermissaoRepository repository, ObjectMapper objectMapper, PermissaoRepository permissaoRepository) {
         this.repository = repository;
         this.objectMapper = objectMapper;
@@ -87,5 +98,27 @@ public class PermissaoService {
         }
 
         return permissaoResponses;
+    }
+
+    public void adicionarOperarios(String idPermissao, List<Integer> novosOperarios) {
+        Query query = new Query(Criteria.where("_id").is(idPermissao));
+        Update update = new Update().addToSet("id_operario").each(novosOperarios.toArray());
+
+        mongoTemplate.updateFirst(query, update, Permissao.class);
+    }
+
+    public void removerOperarios(String idPermissao, List<Integer> operariosRemover) {
+        if (operariosRemover == null || operariosRemover.isEmpty()) {
+            throw new IllegalArgumentException("A lista de operários para remover não pode estar vazia");
+        }
+
+        Query query = new Query(Criteria.where("_id").is(idPermissao));
+        Update update = new Update().pullAll("id_operario", operariosRemover.toArray());
+
+        UpdateResult result = mongoTemplate.updateFirst(query, update, Permissao.class);
+
+        if (result.getMatchedCount() == 0) {
+            throw new RuntimeException("Permissão não encontrada");
+        }
     }
 }
