@@ -1,6 +1,6 @@
 package com.example.mssinaramongo.controller;
 
-import com.example.mssinaramongo.dto.request.PermissaoRequest;
+import com.example.mssinaramongo.dto.request.PermissaoRequestDTO;
 import com.example.mssinaramongo.dto.response.PermissaoResponseDTO;
 import com.example.mssinaramongo.openAPI.PermissaoOpenAPI;
 import com.example.mssinaramongo.service.PermissaoService;
@@ -38,7 +38,7 @@ public class PermissaoController implements PermissaoOpenAPI {
 
     // Criar nova
     @PostMapping("/inserir")
-    public ResponseEntity<String> inserirPermissao(@Validated({OnCreate.class, Default.class}) @RequestBody PermissaoRequest dto) {
+    public ResponseEntity<String> inserirPermissao(@Validated({OnCreate.class, Default.class}) @RequestBody PermissaoRequestDTO dto) {
         permissaoService.inserirPermissao(dto);
         return ResponseEntity.ok("Permissão inserida com sucesso!");
     }
@@ -46,7 +46,7 @@ public class PermissaoController implements PermissaoOpenAPI {
     // Atualizar
     @PatchMapping("/atualizar/{id}")
     public ResponseEntity<String> atualizarPermissao(@Validated({OnPatch.class, Default.class}) @PathVariable String id,
-                                       @RequestBody PermissaoRequest updates) {
+                                       @RequestBody PermissaoRequestDTO updates) {
         permissaoService.atualizarPermissao(id, updates);
         return ResponseEntity.ok("Permissão atualizada com sucesso!");
     }

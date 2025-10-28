@@ -1,6 +1,6 @@
 package com.example.mssinaramongo.service;
 
-import com.example.mssinaramongo.dto.request.PermissaoRequest;
+import com.example.mssinaramongo.dto.request.PermissaoRequestDTO;
 import com.example.mssinaramongo.dto.response.PermissaoResponseDTO;
 import com.example.mssinaramongo.exception.EntidadeNaoEncontradaException;
 import com.example.mssinaramongo.model.Permissao;
@@ -53,13 +53,13 @@ public class PermissaoService {
         return objectMapper.convertValue(permissao, PermissaoResponseDTO.class);
     }
 
-    public PermissaoResponseDTO inserirPermissao(PermissaoRequest request) {
+    public PermissaoResponseDTO inserirPermissao(PermissaoRequestDTO request) {
         Permissao permissao = objectMapper.convertValue(request, Permissao.class);
         Permissao permissaoSalva = repository.save(permissao);
         return objectMapper.convertValue(permissaoSalva, PermissaoResponseDTO.class);
     }
 
-    public PermissaoResponseDTO atualizarPermissao(String id, PermissaoRequest updates) {
+    public PermissaoResponseDTO atualizarPermissao(String id, PermissaoRequestDTO updates) {
         Permissao permissao = repository.findById(id)
                 .orElseThrow(() -> new EntidadeNaoEncontradaException("Permissao", id));
 
