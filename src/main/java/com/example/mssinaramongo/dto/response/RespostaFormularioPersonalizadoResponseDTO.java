@@ -27,16 +27,21 @@ public class RespostaFormularioPersonalizadoResponseDTO {
     @Schema(description = "ID único do operário", example = "1234")
     private Integer idOperario;
 
+    @Schema(description = "ID único da empresa", example = "1234")
+    private Integer idEmpresa;
+
     public RespostaFormularioPersonalizadoResponseDTO(String id,
                                                       ArrayList<Resposta> respostas,
                                                       Date data,
                                                       String idForm,
-                                                      Integer idOperario) {
+                                                      Integer idOperario,
+                                                      Integer idEmpresa) {
         this.id = id;
         this.respostas = respostas;
         this.data = data;
         this.idForm = idForm;
         this.idOperario = idOperario;
+        this.idEmpresa = idEmpresa;
     }
 
     public String getId() {
@@ -77,5 +82,13 @@ public class RespostaFormularioPersonalizadoResponseDTO {
 
     public void setIdOperario(Integer idOperario) {
         this.idOperario = idOperario;
+    }
+
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 }

@@ -136,4 +136,15 @@ public class RespostaFormularioPersonalizadoService {
 
         return result;
     }
+
+    public Integer buscarUltimoOperario(Integer idEmpresa) {
+        List<RespostaFormularioPersonalizado> lista = respostaFormularioPersonalizadoRepository.findByIdEmpresaOrderByDataDesc(idEmpresa);
+
+        if (lista.isEmpty()) {
+            return 0;
+        } else {
+            RespostaFormularioPersonalizado formularioPersonalizado = lista.getFirst();
+            return formularioPersonalizado.getIdOperario();
+        }
+    }
 }

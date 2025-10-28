@@ -13,4 +13,6 @@ public interface RespostaFormularioPersonalizadoRepository extends MongoReposito
     Integer countByIdOperario(Integer idOperario);
 
     List<RespostaFormularioPersonalizado> findByIdFormIn(List<String> formIds);
+
+    List<RespostaFormularioPersonalizado> findByIdEmpresaOrderByDataDesc(Integer idEmpresa);
 }

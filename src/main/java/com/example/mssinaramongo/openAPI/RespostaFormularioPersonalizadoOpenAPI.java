@@ -82,4 +82,13 @@ public interface RespostaFormularioPersonalizadoOpenAPI {
             @ApiResponse(responseCode = "404", description = "Não foram encontrados formulários com essa permissão")
     })
     ResponseEntity<List<FormularioPersonalizadoComRespostasResponseDTO>> buscarFormulariosRespondidosPorPermissao(@Parameter(description = "ID único da permissão") @PathVariable String idPermissao);
+
+    @Operation(summary = "Busca o último operário que respondeu um formulário personalizado",
+    description = "Retorna o ID único do operário")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Foram encontrados formulários com esse ID de empresa",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Integer.class))),
+            @ApiResponse(responseCode = "400", description = "Não foi encontrado nenhum formulário com esse ID de empresa")
+    })
+    ResponseEntity<Integer> buscarUltimoOperario(@Parameter(description = "ID da empresa") @PathVariable Integer idEmpresa);
 }

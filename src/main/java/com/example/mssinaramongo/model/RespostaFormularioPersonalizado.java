@@ -24,6 +24,9 @@ public class RespostaFormularioPersonalizado {
     @Field("id_operario")
     private Integer idOperario;
 
+    @Field("id_empresa")
+    private Integer idEmpresa;
+
     public RespostaFormularioPersonalizado() {
     }
 
@@ -65,5 +68,13 @@ public class RespostaFormularioPersonalizado {
 
     public void setIdOperario(Integer idOperario) {
         this.idOperario = idOperario;
+    }
+
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 }
