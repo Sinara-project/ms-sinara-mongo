@@ -133,4 +133,10 @@ public class FormularioPersonalizadoService {
 
         return formulariosResponse;
     }
+
+    public Integer contarFormulariosPendentes(String idPermissao) {
+        List<FormularioPersonalizadoResponseDTO> formulariosResponse = buscarPendentesPorPermissao(idPermissao);
+
+        return formulariosResponse.size();
+    }
 }

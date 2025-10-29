@@ -114,8 +114,16 @@ public interface FormularioPersonalizadoOpenAPI {
             description = "Retorna uma lista de formularios")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Foram achados formulários para essa permissão",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Integer.class))),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = FormularioPersonalizadoResponseDTO.class))),
             @ApiResponse(responseCode = "404", description = "Não há formulários para essa permissão")
     })
     ResponseEntity<List<FormularioPersonalizadoResponseDTO>> buscarFormulariosPorPermissao(@Parameter(description = "ID único da permissão") @PathVariable String idPermissao);
+
+    @Operation(summary = "Conta formulários pendentes por permissão",
+        description = "Retorna um Integer")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Foram achados formulários pra essa permissão",
+                content = @Content(mediaType = "application/json", schema = @Schema(implementation = Integer.class)))
+    })
+    ResponseEntity<Integer> contarFormulariosPendentes(@PathVariable String idPermissao);
 }

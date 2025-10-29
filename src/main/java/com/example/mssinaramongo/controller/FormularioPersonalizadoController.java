@@ -96,5 +96,13 @@ public class FormularioPersonalizadoController implements FormularioPersonalizad
         List<FormularioPersonalizadoResponseDTO> formulariosPersonalizado = formularioPersonalizadoService.buscarFormulariosPorPermissao(idPermissao);
         return ResponseEntity.ok(formulariosPersonalizado);
     }
+
+    // Contar formularios pendentes por permissao
+    @GetMapping("/contar-formularios-pendentes/{idPermissao}")
+    public ResponseEntity<Integer> contarFormulariosPendentes(@PathVariable String idPermissao) {
+        Integer count = formularioPersonalizadoService.contarFormulariosPendentes(idPermissao);
+
+        return ResponseEntity.ok(count);
+    }
 }
 
