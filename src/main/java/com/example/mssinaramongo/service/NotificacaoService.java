@@ -66,4 +66,15 @@ public class NotificacaoService {
 
         return notificacaoResponses;
     }
+
+    public List<NotificacaoResponseDTO> buscarPorEmpresa(Integer idEmpresa) {
+        List<Notificacao> notificacoes = notificacaoRepository.findByIdEmpresa(idEmpresa);
+        List<NotificacaoResponseDTO> notificacaoResponses = new ArrayList<>();
+
+        for (int i = 0; i < notificacoes.size(); i++) {
+            notificacaoResponses.add(objectMapper.convertValue(notificacoes.get(i), NotificacaoResponseDTO.class));
+        }
+
+        return notificacaoResponses;
+    }
 }
