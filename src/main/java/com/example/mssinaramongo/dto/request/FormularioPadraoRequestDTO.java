@@ -67,9 +67,8 @@ public class FormularioPadraoRequestDTO {
     @Schema(description = "ID do funcionário", example = "1234")
     private Integer idOperario;
 
-    @NotBlank(message = "A qualidade é obrigatória", groups = OnCreate.class)
-    @Schema(description = "Qualidade da água", example = "Ruim")
-    private String qualidade;
+    public FormularioPadraoRequestDTO() {
+    }
 
     // getters e setters
     public Integer getIdEmpresa() {
@@ -166,13 +165,5 @@ public class FormularioPadraoRequestDTO {
 
     public void setIdOperario(Integer idOperario) {
         this.idOperario = idOperario;
-    }
-
-    public String getQualidade() {
-        return qualidade;
-    }
-
-    public void setQualidade(String qualidade) {
-        this.qualidade = qualidade;
     }
 }
