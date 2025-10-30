@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface NotificacaoRepository extends MongoRepository<Notificacao, String> {
     List<Notificacao> findByIdEnvioContainingOrderByDataDesc(String idEnvio);
+
+    List<Notificacao> findByIdEmpresa(Integer idEmpresa);
 }

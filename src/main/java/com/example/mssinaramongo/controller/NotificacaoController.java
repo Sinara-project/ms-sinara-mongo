@@ -32,6 +32,7 @@ public class NotificacaoController implements NotificacaoOpenAPI {
     @GetMapping("/{id}")
     public ResponseEntity<NotificacaoResponseDTO> buscarPorId(@PathVariable String id) {
         NotificacaoResponseDTO notificacaoResponse = notificacaoService.buscarPorId(id);
+
         return ResponseEntity.ok(notificacaoResponse);
     }
 
@@ -39,6 +40,7 @@ public class NotificacaoController implements NotificacaoOpenAPI {
     @PostMapping("/inserir")
     public ResponseEntity<String> inserirNotificacao(@Validated({OnCreate.class, Default.class}) @RequestBody NotificacaoRequestDTO dto) {
         notificacaoService.inserirNotificacao(dto);
+
         return ResponseEntity.ok("Notificação inserida com sucesso!");
     }
 
@@ -46,6 +48,7 @@ public class NotificacaoController implements NotificacaoOpenAPI {
     @DeleteMapping("/excluir/{id}")
     public ResponseEntity<String> excluirNotificacao(@PathVariable String id) {
         notificacaoService.excluirNotificacao(id);
+
         return ResponseEntity.ok("Notificação excluída com sucesso!");
     }
 
@@ -53,6 +56,15 @@ public class NotificacaoController implements NotificacaoOpenAPI {
     @GetMapping("buscar-por-usuario/{idEnvio}")
     public ResponseEntity<List<NotificacaoResponseDTO>> buscarPorIdEnvio(@PathVariable String idEnvio) {
         List<NotificacaoResponseDTO> notificacoesResponse = notificacaoService.buscarPorIdEnvio(idEnvio);
+
+        return ResponseEntity.ok(notificacoesResponse);
+    }
+
+    // Buscar notificações por idEmpresa
+    @GetMapping("buscar-por-empresa/{idEmpresa}")
+    public ResponseEntity<List<NotificacaoResponseDTO>> buscarPorEmpresa(@PathVariable Integer idEmpresa) {
+        List<NotificacaoResponseDTO> notificacoesResponse = notificacaoService.buscarPorEmpresa(idEmpresa);
+
         return ResponseEntity.ok(notificacoesResponse);
     }
 }

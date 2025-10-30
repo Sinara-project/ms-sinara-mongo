@@ -63,4 +63,13 @@ public interface NotificacaoOpenAPI {
             @ApiResponse(responseCode = "404", description = "Esse usuário não tem nenhuma notificação")
     })
     ResponseEntity<List<NotificacaoResponseDTO>> buscarPorIdEnvio(@Parameter(description = "ID do usuário") @PathVariable String idEnvio);
+
+    @Operation(summary = "Lista notificações por empresa",
+            description = "Retorna uma lista de notificações")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Houve notificações encontradas para essa empresa",
+                content = @Content(mediaType = "application/json", schema = @Schema(implementation = NotificacaoResponseDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Essa empresa não tem nenhuma notificação")
+    })
+    ResponseEntity<List<NotificacaoResponseDTO>> buscarPorEmpresa(@Parameter(description = "ID único da empresa") @PathVariable Integer idEmpresa);
     }
