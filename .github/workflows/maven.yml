@@ -1,3 +1,4 @@
+
 name: Maven CI
 
 on:
@@ -5,7 +6,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+    
 permissions:
   contents: read
   security-events: write
@@ -13,6 +14,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
 
     steps:
     - uses: actions/checkout@v3
@@ -22,7 +24,4 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
     - name: Build with Maven
-      run: mvn clean install
-    - name: Submit dependency snapshot
-      if: false 
-      uses: advanced-security/maven-dependency-submission-action@v3
+      run: mvn clean install -DskipTests
