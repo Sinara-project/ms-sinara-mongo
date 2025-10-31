@@ -7,13 +7,12 @@ import com.example.mssinaramongo.model.FormularioPadrao;
 import com.example.mssinaramongo.repository.FormularioPadraoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,11 +20,14 @@ public class FormularioPadraoService {
 
     private final FormularioPadraoRepository formularioPadraoRepository;
     private final ObjectMapper objectMapper;
+    private static final String apiUrlQualidadeAgua = "http://98.94.90.8:5000/agua/prever";
+    private final RestTemplate restTemplate;
 
     @Autowired
-    public FormularioPadraoService(FormularioPadraoRepository formularioPadraoRepository, ObjectMapper objectMapper) {
+    public FormularioPadraoService(FormularioPadraoRepository formularioPadraoRepository, ObjectMapper objectMapper, RestTemplate restTemplate) {
         this.formularioPadraoRepository = formularioPadraoRepository;
         this.objectMapper = objectMapper;
+        this.restTemplate = restTemplate;
     }
 
     public List<FormularioPadraoResponseDTO> listarFormulariosPadrao() {
@@ -44,6 +46,24 @@ public class FormularioPadraoService {
     @Transactional
     public FormularioPadraoResponseDTO inserirFormularioPadrao(FormularioPadraoRequestDTO formularioPadraoRequest) {
         FormularioPadrao formularioPadrao = objectMapper.convertValue(formularioPadraoRequest, FormularioPadrao.class);
+
+        Map<String, Object> dadosAgua = new HashMap<>();
+        dadosAgua.put("cloro_residual", formularioPadrao.getCloroResidual());
+        dadosAgua.put("cor_agua_bruta", formularioPadrao.getCorAguaBruta());
+        dadosAgua.put("cor_agua_tratada", formularioPadrao.getCorAguaTratada());
+        dadosAgua.put("fluoreto", formularioPadrao.getFluoreto());
+        dadosAgua.put("nitrato", formularioPadrao.getNitrato());
+        dadosAgua.put("ph_agua_bruta", formularioPadrao.getPhAguaBruta());
+        dadosAgua.put("ph_agua_tratada", formularioPadrao.getPhAguaTratada());
+        dadosAgua.put("turbidez_agua_bruta", formularioPadrao.getTurbidezAguaBruta());
+        dadosAgua.put("turbidez_agua_tratada", formularioPadrao.getTurbidezAguaTratada());
+
+        // Chama o método de previsão
+        String qualidadePrevista = preverQualidadeAgua(dadosAgua);
+
+        // Seta a qualidade prevista no formulário
+        formularioPadrao.setQualidade(qualidadePrevista);
+
         FormularioPadrao formularioSalvo = formularioPadraoRepository.save(formularioPadrao);
         return objectMapper.convertValue(formularioSalvo, FormularioPadraoResponseDTO.class);
     }
@@ -90,9 +110,6 @@ public class FormularioPadraoService {
         if (updates.getIdOperario() != null) {
             formulario.setIdOperario(updates.getIdOperario());
         }
-        if (updates.getQualidade() != null && !updates.getQualidade().isEmpty()) {
-            formulario.setQualidade(updates.getQualidade());
-        }
 
         return objectMapper.convertValue(formularioPadraoRepository.save(formulario), FormularioPadraoResponseDTO.class);
     }
@@ -125,5 +142,25 @@ public class FormularioPadraoService {
         }
 
         return formularioResponses;
+    }
+
+    public String preverQualidadeAgua(Map<String, Object> dadosAgua) {
+        try {
+            ResponseEntity<Map> response = restTemplate.postForEntity(
+                    apiUrlQualidadeAgua,
+                    dadosAgua,
+                    Map.class
+            );
+
+            if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
+                Map<String, Object> responseBody = response.getBody();
+                return (String) responseBody.get("qualidade");
+            } else {
+                return "Erro: Não foi possível obter a previsão - Status: " + response.getStatusCode();
+            }
+
+        } catch (Exception e) {
+            return "Erro na conexão com serviço de previsão: " + e.getMessage();
+        }
     }
 }
