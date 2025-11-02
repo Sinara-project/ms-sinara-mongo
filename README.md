@@ -124,9 +124,6 @@ src/
 
 ---
 
-## Como rodar localmente
-
-```bash
-git clone https://github.com/<usuario>/ms-sinara-mongo.git
-cd ms-sinara-mongo
-./mvnw spring-boot:run
+## Documentação Swagger
+A documentação interativa está disponível em:  
+**[Swagger UI – ms-sinara-mongo](https://ms-sinara-mongo.onrender.com/swagger-ui/index.html)**
