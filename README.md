@@ -120,8 +120,7 @@ src/
 - MongoDB  
 - Spring Data Mongo  
 - Jakarta Validation  
-- OpenAPI / Swagger  
-- Lombok
+- OpenAPI / Swagger 
 
 ---
 
