@@ -20,7 +20,7 @@ public class FormularioPadraoService {
 
     private final FormularioPadraoRepository formularioPadraoRepository;
     private final ObjectMapper objectMapper;
-    private static final String apiUrlQualidadeAgua = "http://98.94.90.8:5000/agua/prever";
+    private static final String apiUrlQualidadeAgua = "http://13.219.213.99:5000/agua/prever";
     private final RestTemplate restTemplate;
 
     @Autowired
@@ -58,10 +58,7 @@ public class FormularioPadraoService {
         dadosAgua.put("turbidez_agua_bruta", formularioPadrao.getTurbidezAguaBruta());
         dadosAgua.put("turbidez_agua_tratada", formularioPadrao.getTurbidezAguaTratada());
 
-        // Chama o método de previsão
         String qualidadePrevista = preverQualidadeAgua(dadosAgua);
-
-        // Seta a qualidade prevista no formulário
         formularioPadrao.setQualidade(qualidadePrevista);
 
         FormularioPadrao formularioSalvo = formularioPadraoRepository.save(formularioPadrao);

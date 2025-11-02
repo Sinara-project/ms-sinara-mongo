@@ -18,48 +18,30 @@ public class FormularioPadraoRequestDTO {
     @Schema(description = "Data de preenchimento", example = "2025-10-12T16:44:35.614Z")
     private Date dataPreenchimento;
 
-    @DecimalMin(value = "0.2", message ="O cloro residual deve ser maior ou igual a 0.2 mg/L")
-    @DecimalMax(value = "2.0", message = "O cloro residual deve ser menor ou igual a 2.0 mg/L")
     @Schema(description = "Cloro residual da água", example = "1.7")
     private double cloroResidual;
 
-    @Min(value = 0, message = "A cor da água deve ser maior ou igual a 0 uH")
-    @Max(value = 15, message = "A cor da água deve ser maior ou igual a 15 uH")
     @Schema(description = "Cor da água bruta (antes do tratamento)", example = "14")
     private int corAguaBruta;
 
-    @Min(value = 0, message = "A cor da água deve ser maior ou igual a 0 uH")
-    @Max(value = 15, message = "A cor da água deve ser maior ou igual a 15 uH")
-    @Schema(description = "Cor da água tratada (pós-tratamento)", example = "5")
+    @Schema(description = "Cor da água tratada (após o tratamento)", example = "5")
     private int corAguaTratada;
 
-    @DecimalMin(value = "0.0", message = "O valor do nitrato deve ser maior ou igual a 0,0 mg/L")
-    @DecimalMax(value = "1.5", message = "O valor do fluoreto deve ser menor ou igual a 1,5 mg/L")
     @Schema(description = "Nível de fluoreto da água", example = "1.3")
     private double fluoreto;
 
-    @DecimalMin(value = "0.0",  message = "O pH da água bruta deve ser >= 0")
-    @DecimalMax(value = "10.0", message = "o valor do nitrato deve ser menor ou igual a 10 mg/L")
     @Schema(description = "Nível de nitrato da água", example = "5")
     private double nitrato;
 
-    @DecimalMin(value = "0.0", message = "O pH deve ser maior ou igual a 0")
-    @DecimalMax(value = "14.0", message = "O pH deve ser menor ou igual a 14")
     @Schema(description = "pH da água bruta (antes do tratamento)", example = "9.5")
     private double phAguaBruta;
 
-    @DecimalMin(value = "0.0", message = "O pH deve ser maior ou igual a 0")
-    @DecimalMax(value = "14.0", message = "O pH deve ser menor ou igual a 14")
-    @Schema(description = "pH da água tratada (pós-tratamento)", example = "7.5")
+    @Schema(description = "pH da água tratada (após o tratamento)", example = "7.5")
     private double phAguaTratada;
 
-    @DecimalMin(value = "0.0", message = "A turbidez da água deve ser maior ou igual a 0")
-    @DecimalMax(value = "5.0", message = "A turbidez da água deve ser menor ou igual a 5")
     @Schema(description = "Turbidez da água bruta (antes do tratamento)", example = "5")
     private double turbidezAguaBruta;
 
-    @DecimalMin(value = "0.0", message = "A turbidez da água deve ser maior ou igual a 0")
-    @DecimalMax(value = "5.0", message = "A turbidez da água deve ser menor ou igual a 5")
     @Schema(description = "Turbidez da água tratada (pós-tratamento)", example = "1.3")
     private double turbidezAguaTratada;
 
