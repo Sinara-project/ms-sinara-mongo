@@ -58,8 +58,6 @@ public class FormularioPadraoController implements FormularioPadraoOpenAPI {
         return ResponseEntity.ok(lista);
     }
 
-
-
     // Buscar por data
     @GetMapping("/buscar-por-data/{data}")
     public List<FormularioPadraoResponseDTO> buscarFormularioPadraoPorData(

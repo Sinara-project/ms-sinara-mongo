@@ -70,7 +70,7 @@ public class RespostaFormularioPersonalizadoController implements RespostaFormul
     }
 
     // buscar último operário que respondeu um forms
-    @GetMapping("buscar-ultimo-operario/{idEmpresa}")
+    @GetMapping("/buscar-ultimo-operario/{idEmpresa}")
     public ResponseEntity<Integer> buscarUltimoOperario(@PathVariable Integer idEmpresa) {
         Integer ultimoOperario = respostaFormularioPersonalizadoService.buscarUltimoOperario(idEmpresa);
 

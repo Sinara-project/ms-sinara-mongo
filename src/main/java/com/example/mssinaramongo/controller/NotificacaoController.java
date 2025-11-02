@@ -53,7 +53,7 @@ public class NotificacaoController implements NotificacaoOpenAPI {
     }
 
     // Listar notificações por idEnvio
-    @GetMapping("buscar-por-usuario/{idEnvio}")
+    @GetMapping("/buscar-por-usuario/{idEnvio}")
     public ResponseEntity<List<NotificacaoResponseDTO>> buscarPorIdEnvio(@PathVariable String idEnvio) {
         List<NotificacaoResponseDTO> notificacoesResponse = notificacaoService.buscarPorIdEnvio(idEnvio);
 
@@ -61,7 +61,7 @@ public class NotificacaoController implements NotificacaoOpenAPI {
     }
 
     // Buscar notificações por idEmpresa
-    @GetMapping("buscar-por-empresa/{idEmpresa}")
+    @GetMapping("/buscar-por-empresa/{idEmpresa}")
     public ResponseEntity<List<NotificacaoResponseDTO>> buscarPorEmpresa(@PathVariable Integer idEmpresa) {
         List<NotificacaoResponseDTO> notificacoesResponse = notificacaoService.buscarPorEmpresa(idEmpresa);
 
